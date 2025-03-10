@@ -1,3 +1,5 @@
+/* Amir Mullagaliev, Seneca Polytechnic College, 2025-03 */
+
 #define INCLUDE_MEMORY
 #include "config.h"
 #include "system.h"
