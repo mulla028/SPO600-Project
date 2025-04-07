@@ -1,0 +1,968 @@
+;; Function scale_samples (scale_samples.default, funcdef_no=23, decl_uid=3954, cgraph_uid=24, symbol_order=23)
+
+
+************************************************************
+*  ANALYZATION - Examining Function: scale_samples                *
+************************************************************
+************************************************************
+*  ANALYSIS FINISHED!
+************************************************************
+__attribute__((target ("default"), target_clones ("default", "popcnt")))
+void scale_samples (int16_t * in, int16_t * out, int cnt, int volume)
+{
+  sizetype ivtmp.33;
+  sizetype ivtmp.28;
+  vector(8) short int vect__12.17;
+  vector(4) int vect__10.16;
+  vector(4) int vect__9.15;
+  vector(4) int vect__5.14;
+  vector(8) short int vect__4.13;
+  int tmp.10;
+  unsigned int niters_vector_mult_vf.9;
+  unsigned int bnd.8;
+  int x;
+  sizetype _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int16_t * _4;
+  short int _5;
+  int _6;
+  int _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  int16_t * _12;
+  short int _21;
+  sizetype _22;
+  sizetype _27;
+  ssizetype _28;
+  int16_t * _29;
+  unsigned int _31;
+  unsigned int _32;
+  long unsigned int _33;
+  int16_t * _34;
+  short int _41;
+  int _42;
+  int _43;
+  int _44;
+  short int _46;
+  int _52;
+  long unsigned int _54;
+  int16_t * _55;
+  short int _56;
+  int _57;
+  int _58;
+  int _59;
+  int16_t * _60;
+  short int _61;
+  sizetype _67;
+  sizetype _68;
+  vector(4) int _78;
+  short int _90;
+  int _91;
+  int _92;
+  int _93;
+  int16_t * _94;
+  short int _95;
+  long unsigned int _101;
+  int16_t * _102;
+  short int _103;
+  int _104;
+  int _105;
+  int _106;
+  int16_t * _107;
+  short int _108;
+  long unsigned int _114;
+  int16_t * _115;
+  short int _116;
+  int _117;
+  int _118;
+  int _119;
+  int16_t * _120;
+  short int _121;
+  long unsigned int _127;
+  int16_t * _128;
+  short int _129;
+  int _130;
+  int _131;
+  int _132;
+  int16_t * _133;
+  short int _134;
+  long unsigned int _140;
+  int16_t * _141;
+  short int _142;
+  int _143;
+  int _144;
+  int _145;
+  int16_t * _146;
+  short int _147;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG x => 0
+  # DEBUG BEGIN_STMT
+  if (cnt_16(D) > 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 20>; [11.00%]
+
+  <bb 20> [local count: 12992276]:
+  goto <bb 19>; [100.00%]
+
+  <bb 3> [local count: 105119324]:
+  _6 = volume_18(D) * 32767;
+  _7 = _6 / 100;
+  _8 = _7 << 1;
+  _32 = (unsigned int) cnt_16(D);
+  _31 = _32 + 4294967295;
+  if (_31 > 6)
+    goto <bb 4>; [89.44%]
+  else
+    goto <bb 21>; [10.56%]
+
+  <bb 4> [local count: 94021582]:
+  _29 = in_17(D) + 2;
+  _28 = out_19(D) - _29;
+  _27 = (sizetype) _28;
+  if (_27 > 12)
+    goto <bb 5>; [89.44%]
+  else
+    goto <bb 22>; [10.56%]
+
+  <bb 22> [local count: 9926122]:
+  goto <bb 15>; [100.00%]
+
+  <bb 5> [local count: 75685914]:
+  bnd.8_70 = _32 >> 3;
+  _78 = {_8, _8, _8, _8};
+  _67 = (sizetype) bnd.8_70;
+  _68 = _67 * 16;
+
+  <bb 6> [local count: 688053764]:
+  # ivtmp.33_50 = PHI <ivtmp.33_66(23), 0(5)>
+  # DEBUG x => NULL
+  # DEBUG BEGIN_STMT
+  vect__4.13_75 = MEM <vector(8) short int> [(int16_t *)in_17(D) + ivtmp.33_50 * 1];
+  vect__5.14_76 = [vec_unpack_lo_expr] vect__4.13_75;
+  vect__5.14_77 = [vec_unpack_hi_expr] vect__4.13_75;
+  vect__9.15_80 = vect__5.14_76 * _78;
+  vect__9.15_81 = vect__5.14_77 * _78;
+  vect__10.16_82 = vect__9.15_80 >> 16;
+  vect__10.16_83 = vect__9.15_81 >> 16;
+  vect__12.17_84 = VEC_PACK_TRUNC_EXPR <vect__10.16_82, vect__10.16_83>;
+  MEM <vector(8) short int> [(int16_t *)out_19(D) + ivtmp.33_50 * 1] = vect__12.17_84;
+  # DEBUG BEGIN_STMT
+  # DEBUG x => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.33_66 = ivtmp.33_50 + 16;
+  if (ivtmp.33_66 != _68)
+    goto <bb 23>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 23> [local count: 612367850]:
+  goto <bb 6>; [100.00%]
+
+  <bb 7> [local count: 75685914]:
+  _52 = cnt_16(D) & -8;
+  niters_vector_mult_vf.9_71 = (unsigned int) _52;
+  if (_32 == niters_vector_mult_vf.9_71)
+    goto <bb 24>; [12.50%]
+  else
+    goto <bb 8>; [87.50%]
+
+  <bb 8> [local count: 74634721]:
+  # DEBUG x => _52
+  # DEBUG BEGIN_STMT
+  _2 = (long unsigned int) niters_vector_mult_vf.9_71;
+  _3 = _2 * 2;
+  _4 = in_17(D) + _3;
+  _5 = *_4;
+  _9 = (int) _5;
+  _10 = _8 * _9;
+  _11 = _10 >> 16;
+  _12 = out_19(D) + _3;
+  _21 = (short int) _11;
+  *_12 = _21;
+  # DEBUG BEGIN_STMT
+  x_79 = _52 + 1;
+  # DEBUG x => x_79
+  # DEBUG BEGIN_STMT
+  if (cnt_16(D) > x_79)
+    goto <bb 9>; [85.71%]
+  else
+    goto <bb 25>; [14.29%]
+
+  <bb 25> [local count: 10662103]:
+  goto <bb 17>; [100.00%]
+
+  <bb 9> [local count: 63972618]:
+  # DEBUG x => x_79
+  # DEBUG BEGIN_STMT
+  _33 = _3 + 2;
+  _34 = in_17(D) + _33;
+  _90 = *_34;
+  _91 = (int) _90;
+  _92 = _8 * _91;
+  _93 = _92 >> 16;
+  _94 = out_19(D) + _33;
+  _95 = (short int) _93;
+  *_94 = _95;
+  # DEBUG BEGIN_STMT
+  x_97 = _52 + 2;
+  # DEBUG x => x_97
+  # DEBUG BEGIN_STMT
+  if (cnt_16(D) > x_97)
+    goto <bb 10>; [85.71%]
+  else
+    goto <bb 26>; [14.29%]
+
+  <bb 26> [local count: 9138945]:
+  goto <bb 17>; [100.00%]
+
+  <bb 10> [local count: 54833673]:
+  # DEBUG x => x_97
+  # DEBUG BEGIN_STMT
+  _101 = _3 + 4;
+  _102 = in_17(D) + _101;
+  _103 = *_102;
+  _104 = (int) _103;
+  _105 = _8 * _104;
+  _106 = _105 >> 16;
+  _107 = out_19(D) + _101;
+  _108 = (short int) _106;
+  *_107 = _108;
+  # DEBUG BEGIN_STMT
+  x_110 = _52 + 3;
+  # DEBUG x => x_110
+  # DEBUG BEGIN_STMT
+  if (cnt_16(D) > x_110)
+    goto <bb 11>; [85.71%]
+  else
+    goto <bb 27>; [14.29%]
+
+  <bb 27> [local count: 7833382]:
+  goto <bb 17>; [100.00%]
+
+  <bb 11> [local count: 47000293]:
+  # DEBUG x => x_110
+  # DEBUG BEGIN_STMT
+  _114 = _3 + 6;
+  _115 = in_17(D) + _114;
+  _116 = *_115;
+  _117 = (int) _116;
+  _118 = _8 * _117;
+  _119 = _118 >> 16;
+  _120 = out_19(D) + _114;
+  _121 = (short int) _119;
+  *_120 = _121;
+  # DEBUG BEGIN_STMT
+  x_123 = _52 + 4;
+  # DEBUG x => x_123
+  # DEBUG BEGIN_STMT
+  if (cnt_16(D) > x_123)
+    goto <bb 12>; [85.71%]
+  else
+    goto <bb 28>; [14.29%]
+
+  <bb 28> [local count: 6714328]:
+  goto <bb 17>; [100.00%]
+
+  <bb 12> [local count: 40285965]:
+  # DEBUG x => x_123
+  # DEBUG BEGIN_STMT
+  _127 = _3 + 8;
+  _128 = in_17(D) + _127;
+  _129 = *_128;
+  _130 = (int) _129;
+  _131 = _8 * _130;
+  _132 = _131 >> 16;
+  _133 = out_19(D) + _127;
+  _134 = (short int) _132;
+  *_133 = _134;
+  # DEBUG BEGIN_STMT
+  x_136 = _52 + 5;
+  # DEBUG x => x_136
+  # DEBUG BEGIN_STMT
+  if (cnt_16(D) > x_136)
+    goto <bb 13>; [85.71%]
+  else
+    goto <bb 29>; [14.29%]
+
+  <bb 29> [local count: 5755138]:
+  goto <bb 17>; [100.00%]
+
+  <bb 13> [local count: 34530827]:
+  # DEBUG x => x_136
+  # DEBUG BEGIN_STMT
+  _140 = _3 + 10;
+  _141 = in_17(D) + _140;
+  _142 = *_141;
+  _143 = (int) _142;
+  _144 = _8 * _143;
+  _145 = _144 >> 16;
+  _146 = out_19(D) + _140;
+  _147 = (short int) _145;
+  *_146 = _147;
+  # DEBUG BEGIN_STMT
+  x_149 = _52 + 6;
+  # DEBUG x => x_149
+  # DEBUG BEGIN_STMT
+  if (cnt_16(D) > x_149)
+    goto <bb 14>; [85.71%]
+  else
+    goto <bb 30>; [14.29%]
+
+  <bb 30> [local count: 4932975]:
+  goto <bb 17>; [100.00%]
+
+  <bb 14> [local count: 29597849]:
+  # DEBUG x => x_149
+  # DEBUG BEGIN_STMT
+  _54 = _3 + 12;
+  _55 = in_17(D) + _54;
+  _56 = *_55;
+  _57 = (int) _56;
+  _58 = _8 * _57;
+  _59 = _58 >> 16;
+  _60 = out_19(D) + _54;
+  _61 = (short int) _59;
+  *_60 = _61;
+  # DEBUG BEGIN_STMT
+  # DEBUG x => _52 + 7
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [100.00%]
+
+  <bb 21> [local count: 11097742]:
+
+  <bb 15> [local count: 21023864]:
+  _1 = (sizetype) cnt_16(D);
+  _22 = _1 * 2;
+
+  <bb 16> [local count: 191126041]:
+  # ivtmp.28_23 = PHI <0(15), ivtmp.28_63(31)>
+  # DEBUG x => (int) (ivtmp.28_23 /[ex] 2)
+  # DEBUG BEGIN_STMT
+  _41 = MEM[(int16_t *)in_17(D) + ivtmp.28_23 * 1];
+  _42 = (int) _41;
+  _43 = _8 * _42;
+  _44 = _43 >> 16;
+  _46 = (short int) _44;
+  MEM[(int16_t *)out_19(D) + ivtmp.28_23 * 1] = _46;
+  # DEBUG BEGIN_STMT
+  # DEBUG x => (int) (ivtmp.28_23 /[ex] 2) + 1
+  # DEBUG BEGIN_STMT
+  ivtmp.28_63 = ivtmp.28_23 + 2;
+  if (_22 != ivtmp.28_63)
+    goto <bb 31>; [89.00%]
+  else
+    goto <bb 32>; [11.00%]
+
+  <bb 32> [local count: 21023864]:
+  goto <bb 18>; [100.00%]
+
+  <bb 31> [local count: 170102177]:
+  goto <bb 16>; [100.00%]
+
+  <bb 24> [local count: 9460739]:
+
+  <bb 17> [local count: 84095460]:
+
+  <bb 18> [local count: 105119324]:
+
+  <bb 19> [local count: 118111600]:
+  return;
+
+}
+
+
+
+;; Function scale_samples.popcnt (scale_samples.popcnt, funcdef_no=25, decl_uid=3985, cgraph_uid=30, symbol_order=28)
+
+
+************************************************************
+*  ANALYZATION - Examining Function: scale_samples.popcnt         *
+************************************************************
+PRUNE: scale_samples
+CLONE FOUND: scale_samples
+CURRENT: scale_samples.popcnt
+************************************************************
+*  End of Diagnostic
+************************************************************
+__attribute__((target ("popcnt"), target_clones ("default", "popcnt")))
+void scale_samples.popcnt (int16_t * in, int16_t * out, int cnt, int volume)
+{
+  sizetype ivtmp.67;
+  sizetype ivtmp.63;
+  vector(8) short int vect__16.52;
+  vector(4) int vect__13.51;
+  vector(4) int vect__12.50;
+  vector(4) int vect__7.49;
+  vector(8) short int vect__6.48;
+  int tmp.45;
+  unsigned int niters_vector_mult_vf.44;
+  unsigned int bnd.43;
+  int x;
+  sizetype _2;
+  long unsigned int _3;
+  long unsigned int _5;
+  int16_t * _6;
+  short int _7;
+  int _9;
+  int _10;
+  int _11;
+  int _12;
+  int _13;
+  int _15;
+  int16_t * _16;
+  short int _17;
+  sizetype _22;
+  sizetype _27;
+  ssizetype _28;
+  int16_t * _29;
+  unsigned int _31;
+  unsigned int _32;
+  long unsigned int _33;
+  int16_t * _34;
+  short int _41;
+  int _42;
+  int _43;
+  int _44;
+  short int _46;
+  int _52;
+  long unsigned int _54;
+  int16_t * _55;
+  short int _56;
+  int _57;
+  int _58;
+  int _59;
+  int16_t * _60;
+  short int _61;
+  sizetype _67;
+  sizetype _68;
+  vector(4) int _78;
+  short int _90;
+  int _91;
+  int _92;
+  int _93;
+  int16_t * _94;
+  short int _95;
+  long unsigned int _101;
+  int16_t * _102;
+  short int _103;
+  int _104;
+  int _105;
+  int _106;
+  int16_t * _107;
+  short int _108;
+  long unsigned int _114;
+  int16_t * _115;
+  short int _116;
+  int _117;
+  int _118;
+  int _119;
+  int16_t * _120;
+  short int _121;
+  long unsigned int _127;
+  int16_t * _128;
+  short int _129;
+  int _130;
+  int _131;
+  int _132;
+  int16_t * _133;
+  short int _134;
+  long unsigned int _140;
+  int16_t * _141;
+  short int _142;
+  int _143;
+  int _144;
+  int _145;
+  int16_t * _146;
+  short int _147;
+
+  <bb 2> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG x => 0
+  # DEBUG BEGIN_STMT
+  if (cnt_18(D) > 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 20>; [11.00%]
+
+  <bb 20> [local count: 12992276]:
+  goto <bb 19>; [100.00%]
+
+  <bb 3> [local count: 105119324]:
+  _9 = volume_8(D) * 32767;
+  _10 = _9 / 100;
+  _11 = _10 << 1;
+  _32 = (unsigned int) cnt_18(D);
+  _31 = _32 + 4294967295;
+  if (_31 > 6)
+    goto <bb 4>; [89.44%]
+  else
+    goto <bb 21>; [10.56%]
+
+  <bb 4> [local count: 94021582]:
+  _29 = in_4(D) + 2;
+  _28 = out_14(D) - _29;
+  _27 = (sizetype) _28;
+  if (_27 > 12)
+    goto <bb 5>; [89.44%]
+  else
+    goto <bb 22>; [10.56%]
+
+  <bb 22> [local count: 9926122]:
+  goto <bb 15>; [100.00%]
+
+  <bb 5> [local count: 75685914]:
+  bnd.43_70 = _32 >> 3;
+  _78 = {_11, _11, _11, _11};
+  _67 = (sizetype) bnd.43_70;
+  _68 = _67 * 16;
+
+  <bb 6> [local count: 688053764]:
+  # ivtmp.67_50 = PHI <ivtmp.67_66(23), 0(5)>
+  # DEBUG x => NULL
+  # DEBUG BEGIN_STMT
+  vect__6.48_75 = MEM <vector(8) short int> [(int16_t *)in_4(D) + ivtmp.67_50 * 1];
+  vect__7.49_76 = [vec_unpack_lo_expr] vect__6.48_75;
+  vect__7.49_77 = [vec_unpack_hi_expr] vect__6.48_75;
+  vect__12.50_80 = vect__7.49_76 * _78;
+  vect__12.50_81 = vect__7.49_77 * _78;
+  vect__13.51_82 = vect__12.50_80 >> 16;
+  vect__13.51_83 = vect__12.50_81 >> 16;
+  vect__16.52_84 = VEC_PACK_TRUNC_EXPR <vect__13.51_82, vect__13.51_83>;
+  MEM <vector(8) short int> [(int16_t *)out_14(D) + ivtmp.67_50 * 1] = vect__16.52_84;
+  # DEBUG BEGIN_STMT
+  # DEBUG x => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.67_66 = ivtmp.67_50 + 16;
+  if (ivtmp.67_66 != _68)
+    goto <bb 23>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 23> [local count: 612367850]:
+  goto <bb 6>; [100.00%]
+
+  <bb 7> [local count: 75685914]:
+  _52 = cnt_18(D) & -8;
+  niters_vector_mult_vf.44_71 = (unsigned int) _52;
+  if (_32 == niters_vector_mult_vf.44_71)
+    goto <bb 24>; [12.50%]
+  else
+    goto <bb 8>; [87.50%]
+
+  <bb 8> [local count: 74634721]:
+  # DEBUG x => _52
+  # DEBUG BEGIN_STMT
+  _3 = (long unsigned int) niters_vector_mult_vf.44_71;
+  _5 = _3 * 2;
+  _6 = in_4(D) + _5;
+  _7 = *_6;
+  _12 = (int) _7;
+  _13 = _11 * _12;
+  _15 = _13 >> 16;
+  _16 = out_14(D) + _5;
+  _17 = (short int) _15;
+  *_16 = _17;
+  # DEBUG BEGIN_STMT
+  x_79 = _52 + 1;
+  # DEBUG x => x_79
+  # DEBUG BEGIN_STMT
+  if (cnt_18(D) > x_79)
+    goto <bb 9>; [85.71%]
+  else
+    goto <bb 25>; [14.29%]
+
+  <bb 25> [local count: 10662103]:
+  goto <bb 17>; [100.00%]
+
+  <bb 9> [local count: 63972618]:
+  # DEBUG x => x_79
+  # DEBUG BEGIN_STMT
+  _33 = _5 + 2;
+  _34 = in_4(D) + _33;
+  _90 = *_34;
+  _91 = (int) _90;
+  _92 = _11 * _91;
+  _93 = _92 >> 16;
+  _94 = out_14(D) + _33;
+  _95 = (short int) _93;
+  *_94 = _95;
+  # DEBUG BEGIN_STMT
+  x_97 = _52 + 2;
+  # DEBUG x => x_97
+  # DEBUG BEGIN_STMT
+  if (cnt_18(D) > x_97)
+    goto <bb 10>; [85.71%]
+  else
+    goto <bb 26>; [14.29%]
+
+  <bb 26> [local count: 9138945]:
+  goto <bb 17>; [100.00%]
+
+  <bb 10> [local count: 54833673]:
+  # DEBUG x => x_97
+  # DEBUG BEGIN_STMT
+  _101 = _5 + 4;
+  _102 = in_4(D) + _101;
+  _103 = *_102;
+  _104 = (int) _103;
+  _105 = _11 * _104;
+  _106 = _105 >> 16;
+  _107 = out_14(D) + _101;
+  _108 = (short int) _106;
+  *_107 = _108;
+  # DEBUG BEGIN_STMT
+  x_110 = _52 + 3;
+  # DEBUG x => x_110
+  # DEBUG BEGIN_STMT
+  if (cnt_18(D) > x_110)
+    goto <bb 11>; [85.71%]
+  else
+    goto <bb 27>; [14.29%]
+
+  <bb 27> [local count: 7833382]:
+  goto <bb 17>; [100.00%]
+
+  <bb 11> [local count: 47000293]:
+  # DEBUG x => x_110
+  # DEBUG BEGIN_STMT
+  _114 = _5 + 6;
+  _115 = in_4(D) + _114;
+  _116 = *_115;
+  _117 = (int) _116;
+  _118 = _11 * _117;
+  _119 = _118 >> 16;
+  _120 = out_14(D) + _114;
+  _121 = (short int) _119;
+  *_120 = _121;
+  # DEBUG BEGIN_STMT
+  x_123 = _52 + 4;
+  # DEBUG x => x_123
+  # DEBUG BEGIN_STMT
+  if (cnt_18(D) > x_123)
+    goto <bb 12>; [85.71%]
+  else
+    goto <bb 28>; [14.29%]
+
+  <bb 28> [local count: 6714328]:
+  goto <bb 17>; [100.00%]
+
+  <bb 12> [local count: 40285965]:
+  # DEBUG x => x_123
+  # DEBUG BEGIN_STMT
+  _127 = _5 + 8;
+  _128 = in_4(D) + _127;
+  _129 = *_128;
+  _130 = (int) _129;
+  _131 = _11 * _130;
+  _132 = _131 >> 16;
+  _133 = out_14(D) + _127;
+  _134 = (short int) _132;
+  *_133 = _134;
+  # DEBUG BEGIN_STMT
+  x_136 = _52 + 5;
+  # DEBUG x => x_136
+  # DEBUG BEGIN_STMT
+  if (cnt_18(D) > x_136)
+    goto <bb 13>; [85.71%]
+  else
+    goto <bb 29>; [14.29%]
+
+  <bb 29> [local count: 5755138]:
+  goto <bb 17>; [100.00%]
+
+  <bb 13> [local count: 34530827]:
+  # DEBUG x => x_136
+  # DEBUG BEGIN_STMT
+  _140 = _5 + 10;
+  _141 = in_4(D) + _140;
+  _142 = *_141;
+  _143 = (int) _142;
+  _144 = _11 * _143;
+  _145 = _144 >> 16;
+  _146 = out_14(D) + _140;
+  _147 = (short int) _145;
+  *_146 = _147;
+  # DEBUG BEGIN_STMT
+  x_149 = _52 + 6;
+  # DEBUG x => x_149
+  # DEBUG BEGIN_STMT
+  if (cnt_18(D) > x_149)
+    goto <bb 14>; [85.71%]
+  else
+    goto <bb 30>; [14.29%]
+
+  <bb 30> [local count: 4932975]:
+  goto <bb 17>; [100.00%]
+
+  <bb 14> [local count: 29597849]:
+  # DEBUG x => x_149
+  # DEBUG BEGIN_STMT
+  _54 = _5 + 12;
+  _55 = in_4(D) + _54;
+  _56 = *_55;
+  _57 = (int) _56;
+  _58 = _11 * _57;
+  _59 = _58 >> 16;
+  _60 = out_14(D) + _54;
+  _61 = (short int) _59;
+  *_60 = _61;
+  # DEBUG BEGIN_STMT
+  # DEBUG x => _52 + 7
+  # DEBUG BEGIN_STMT
+  goto <bb 17>; [100.00%]
+
+  <bb 21> [local count: 11097742]:
+
+  <bb 15> [local count: 21023864]:
+  _2 = (sizetype) cnt_18(D);
+  _22 = _2 * 2;
+
+  <bb 16> [local count: 191126041]:
+  # ivtmp.63_23 = PHI <0(15), ivtmp.63_63(31)>
+  # DEBUG x => (int) (ivtmp.63_23 /[ex] 2)
+  # DEBUG BEGIN_STMT
+  _41 = MEM[(int16_t *)in_4(D) + ivtmp.63_23 * 1];
+  _42 = (int) _41;
+  _43 = _11 * _42;
+  _44 = _43 >> 16;
+  _46 = (short int) _44;
+  MEM[(int16_t *)out_14(D) + ivtmp.63_23 * 1] = _46;
+  # DEBUG BEGIN_STMT
+  # DEBUG x => (int) (ivtmp.63_23 /[ex] 2) + 1
+  # DEBUG BEGIN_STMT
+  ivtmp.63_63 = ivtmp.63_23 + 2;
+  if (_22 != ivtmp.63_63)
+    goto <bb 31>; [89.00%]
+  else
+    goto <bb 32>; [11.00%]
+
+  <bb 32> [local count: 21023864]:
+  goto <bb 18>; [100.00%]
+
+  <bb 31> [local count: 170102177]:
+  goto <bb 16>; [100.00%]
+
+  <bb 24> [local count: 9460739]:
+
+  <bb 17> [local count: 84095460]:
+
+  <bb 18> [local count: 105119324]:
+
+  <bb 19> [local count: 118111600]:
+  return;
+
+}
+
+
+
+;; Function sum_sample (sum_sample, funcdef_no=22, decl_uid=3942, cgraph_uid=23, symbol_order=22)
+
+
+************************************************************
+*  ANALYZATION - Examining Function: sum_sample                   *
+************************************************************
+************************************************************
+*  ANALYSIS FINISHED!
+************************************************************
+int sum_sample (int16_t * buff, size_t samples)
+{
+  unsigned long ivtmp.88;
+  vector(4) int vect_t_11.81;
+  vector(4) int vect_t_15.80;
+  vector(4) int vect__5.79;
+  vector(8) short int vect__4.78;
+  int t;
+  void * _1;
+  unsigned long _3;
+  int _27;
+  int _28;
+
+  <bb 2> [local count: 10737416]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG x => 0
+  # DEBUG t => t_8(D)
+  # DEBUG BEGIN_STMT
+  ivtmp.88_15 = (unsigned long) buff_10(D);
+  _3 = ivtmp.88_15 + 100000000;
+
+  <bb 3> [local count: 1063004408]:
+  # vect_t_15.80_14 = PHI <vect_t_11.81_7(5), { 0, 0, 0, 0 }(2)>
+  # ivtmp.88_25 = PHI <ivtmp.88_17(5), ivtmp.88_15(2)>
+  # DEBUG x => NULL
+  # DEBUG t => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG D#18 => D#19 * 2
+  # DEBUG D#17 => buff_10(D) + D#18
+  _1 = (void *) ivtmp.88_25;
+  vect__4.78_19 = MEM <vector(8) short int> [(int16_t *)_1];
+  vect__5.79_18 = [vec_unpack_lo_expr] vect__4.78_19;
+  vect__5.79_16 = [vec_unpack_hi_expr] vect__4.78_19;
+  vect_t_11.81_13 = vect_t_15.80_14 + vect__5.79_18;
+  vect_t_11.81_7 = vect_t_11.81_13 + vect__5.79_16;
+  # DEBUG D#16 => *D#17
+  # DEBUG D#15 => (int) D#16
+  # DEBUG BEGIN_STMT
+  # DEBUG x => NULL
+  # DEBUG t => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.88_17 = ivtmp.88_25 + 16;
+  if (_3 != ivtmp.88_17)
+    goto <bb 5>; [98.99%]
+  else
+    goto <bb 4>; [1.01%]
+
+  <bb 5> [local count: 1052266995]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 10737416]:
+  _27 = .REDUC_PLUS (vect_t_11.81_7);
+  _28 = t_8(D) + _27;
+  # DEBUG BEGIN_STMT
+  return _28;
+
+}
+
+
+
+;; Function scale_samples.resolver (scale_samples.resolver, funcdef_no=27, decl_uid=3994, cgraph_uid=32, symbol_order=30)
+
+
+************************************************************
+*  ANALYZATION - Examining Function: scale_samples.resolver       *
+************************************************************
+************************************************************
+*  ANALYSIS FINISHED (resolver function)
+************************************************************
+__attribute__((returns_nonnull))
+void * scale_samples.resolver ()
+{
+  int _3;
+
+  <bb 2> [local count: 1073741824]:
+  __builtin_cpu_init ();
+  _3 = __builtin_cpu_supports (&"popcnt"[0]);
+  if (_3 > 0)
+    goto <bb 3>; [100.00%]
+  else
+    goto <bb 4>; [0.00%]
+
+  <bb 3> [local count: 1073741824]:
+  return scale_samples.popcnt;
+
+  <bb 4> [count: 0]:
+  return scale_samples;
+
+}
+
+
+
+;; Function main (main, funcdef_no=24, decl_uid=3961, cgraph_uid=25, symbol_order=24) (executed once)
+
+
+************************************************************
+*  ANALYZATION - Examining Function: main                         *
+************************************************************
+NOPRUNE: sum_sample
+CLONE FOUND: sum_sample
+CURRENT: main
+************************************************************
+*  End of Diagnostic
+************************************************************
+int main ()
+{
+  unsigned long ivtmp.109;
+  vector(4) int vect_t_16.102;
+  vector(4) int vect_t_22.101;
+  vector(4) int vect__14.100;
+  vector(8) short int vect__13.99;
+  int t;
+  int16_t * out;
+  int16_t * in;
+  void * _10;
+  unsigned long _12;
+  int _33;
+  int _34;
+
+  <bb 2> [local count: 10737416]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG ttl => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  in_3 = calloc (50000000, 2);
+  # DEBUG in => in_3
+  # DEBUG BEGIN_STMT
+  out_5 = calloc (50000000, 2);
+  # DEBUG out => out_5
+  # DEBUG BEGIN_STMT
+  vol_createsample (in_3, 50000000);
+  # DEBUG BEGIN_STMT
+  scale_samples (in_3, out_5, 50000000, 50);
+  # DEBUG BEGIN_STMT
+  # DEBUG buff => out_5
+  # DEBUG samples => 50000000
+  # DEBUG INLINE_ENTRY sum_sample
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG x => 0
+  # DEBUG t => t_18(D)
+  # DEBUG BEGIN_STMT
+  ivtmp.109_21 = (unsigned long) out_5;
+  _12 = ivtmp.109_21 + 100000000;
+
+  <bb 3> [local count: 1063004408]:
+  # vect_t_22.101_20 = PHI <vect_t_16.102_15(5), { 0, 0, 0, 0 }(2)>
+  # ivtmp.109_31 = PHI <ivtmp.109_22(5), ivtmp.109_21(2)>
+  # DEBUG x => NULL
+  # DEBUG t => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG D#24 => D#25 * 2
+  # DEBUG D#23 => out_5 + D#24
+  _10 = (void *) ivtmp.109_31;
+  vect__13.99_25 = MEM <vector(8) short int> [(int16_t *)_10];
+  vect__14.100_24 = [vec_unpack_lo_expr] vect__13.99_25;
+  vect__14.100_23 = [vec_unpack_hi_expr] vect__13.99_25;
+  vect_t_16.102_19 = vect_t_22.101_20 + vect__14.100_24;
+  vect_t_16.102_15 = vect_t_16.102_19 + vect__14.100_23;
+  # DEBUG D#22 => *D#23
+  # DEBUG D#21 => (int) D#22
+  # DEBUG BEGIN_STMT
+  # DEBUG x => NULL
+  # DEBUG t => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.109_22 = ivtmp.109_31 + 16;
+  if (_12 != ivtmp.109_22)
+    goto <bb 5>; [98.99%]
+  else
+    goto <bb 4>; [1.01%]
+
+  <bb 5> [local count: 1052266995]:
+  goto <bb 3>; [100.00%]
+
+  <bb 4> [local count: 10737416]:
+  _33 = .REDUC_PLUS (vect_t_16.102_15);
+  _34 = t_18(D) + _33;
+  # DEBUG BEGIN_STMT
+  # DEBUG buff => NULL
+  # DEBUG samples => NULL
+  # DEBUG x => NULL
+  # DEBUG t => NULL
+  # DEBUG ttl => _34
+  # DEBUG BEGIN_STMT
+  printf ("Result: %d\n", _34);
+  # DEBUG BEGIN_STMT
+  return 0;
+
+}
